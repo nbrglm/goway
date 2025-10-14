@@ -37,6 +37,23 @@ export async function newGoApiHandler() {
 		return;
 	}
 
+	let routePath = await vscode.window.showInputBox({ prompt: 'Enter the route path (e.g., /user):' });
+	if (!routePath) {
+		vscode.window.showErrorMessage('Route path is required!');
+		return;
+	}
+
+	// Ensure routePath starts with a slash
+	if (!routePath.startsWith('/')) {
+		routePath = '/' + routePath;
+	}
+
+	let routeMethod = await vscode.window.showQuickPick(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], { placeHolder: 'Select the HTTP method for the route:' });
+	if (!routeMethod) {
+		vscode.window.showErrorMessage('HTTP method is required!');
+		return;
+	}
+
 	// Convert handlerName to UpperCamelCase
 	handlerName = handlerName.charAt(0).toUpperCase() + handlerName.slice(1);
 
@@ -61,6 +78,9 @@ export async function newGoApiHandler() {
 		"{handler_name}": snakeName,
 		"{baseImportPath}": baseImportPath,
 		"{metricsNamespace}": metricsNamespace,
+		"{routePath}": routePath,
+		"{routeMethodUpper}": routeMethod.toUpperCase(),
+		"{routeMethodLower}": routeMethod.toLowerCase(),
 	}
 
 	let handlerCode = handlerTemplateString;

@@ -1,4 +1,5 @@
 # NBRGLM GoWay
+<img alt="NBRGLM GoWay's Logo" style="border-radius: 5px;" src="https://github.com/nbrglm/goway/raw/main/images/icon.png">
 
 A VS Code extension providing opinionated tools and generators for structured Golang projects.  
 This extension helps you create standardized API handlers for Golang projects using a predefined template structure.
@@ -10,8 +11,6 @@ This extension helps you create standardized API handlers for Golang projects us
 - Includes boilerplate code with proper error handling, transaction management, metrics, and observability  
 - Configurable import paths and metrics namespace  
 - Mascot/logo assets provided under **CC BY 4.0** (can be used with attribution)  
-
-<img alt="NBRGLM GoWay's Logo" src="https://github.com/nbrglm/goway/raw/main/images/logo.png">
 
 ---
 

@@ -32,8 +32,7 @@ func New{HandlerName}Handler() *{HandlerName}Handler {
 
 func (h *{HandlerName}Handler) Register(router *gin.Engine) {
   metrics.RegisterCollector(h.{HandlerName}Counter)
-  // TODO: Change the method and route as needed
-  engine.GET("/some-route", h.Handle)
+  engine.{routeMethodUpper}("{routePath}", h.Handle)
 }
 
 type {HandlerName}Request struct {
@@ -47,8 +46,8 @@ type {HandlerName}Response struct {
 
 // @Summary {HandlerName} Endpoint
 // @Description Handles {HandlerName} requests
-// TODO: Update the tags, responses, route and method as needed
-// @Tags subsystem, ro, ro
+// TODO: Update the tags and responses as needed
+// @Tags subsystem
 // @Accept json
 // @Produce json
 // @Param request body {HandlerName}Request true "Request body"
@@ -56,7 +55,7 @@ type {HandlerName}Response struct {
 // @Failure 400 {object} reserr.ErrorResponse
 // @Failure 401 {object} reserr.ErrorResponse
 // @Failure 500 {object} reserr.ErrorResponse
-// @Router /some-route [get]
+// @Router {routePath} [{routeMethodLower}]
 func (h *{HandlerName}Handler) Handle(c *gin.Context) {
   h.{HandlerName}Counter.WithLabelValues("total").Inc()
 
