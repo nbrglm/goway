@@ -74,6 +74,7 @@ func (h *{HandlerName}Handler) Handle(c *gin.Context) {
     return
   }
   defer tx.Rollback(ctx)
+  q := store.Querier.WithTx(tx)
 
   // TODO: Implementation of the {HandlerName} logic goes here.
 

@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.0.5] - 2025-10-15
+- Fix: Add missing Querier instance in generated code
+
 ## [v0.0.4] - 2025-10-15
 - Fix: Errors in generated code
 

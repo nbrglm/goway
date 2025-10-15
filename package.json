@@ -2,7 +2,7 @@
   "name": "nbrglm-goway",
   "displayName": "NBRGLM GoWay",
   "description": "Opinionated VS Code tools and generators for structured Golang projects by NBRGLM.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "readme": "README.md",
   "repository": {
     "type": "git",
