@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.0.6] - 2025-10-15
+- Fix: Add & to c.JSON response struct creation
+
 ## [v0.0.5] - 2025-10-15
 - Fix: Add missing Querier instance in generated code
 
