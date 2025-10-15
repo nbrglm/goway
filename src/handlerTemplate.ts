@@ -84,7 +84,7 @@ func (h *{HandlerName}Handler) Handle(c *gin.Context) {
   }
   
   h.{HandlerName}Counter.WithLabelValues("success").Inc()
-  c.JSON(http.StatusOK, {HandlerName}Response{
+  c.JSON(http.StatusOK, &{HandlerName}Response{
     BaseResponse: resp.BaseResponse{
       Success: true,
       Message: "Operation {HandlerName} completed successfully.",
