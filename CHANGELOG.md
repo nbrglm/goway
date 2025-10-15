@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.0.4] - 2025-10-15
+- Fix: Errors in generated code
+
 ## [v0.0.3] - 2025-10-15
 - Fix: Package name recognition issue
 

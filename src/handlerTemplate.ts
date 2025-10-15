@@ -32,7 +32,7 @@ func New{HandlerName}Handler() *{HandlerName}Handler {
 
 func (h *{HandlerName}Handler) Register(router *gin.Engine) {
   metrics.RegisterCollector(h.{HandlerName}Counter)
-  engine.{routeMethodUpper}("{routePath}", h.Handle)
+  router.{routeMethodUpper}("{routePath}", h.Handle)
 }
 
 type {HandlerName}Request struct {
@@ -70,7 +70,7 @@ func (h *{HandlerName}Handler) Handle(c *gin.Context) {
   
   tx, err := store.PgPool.Begin(ctx)
   if err != nil {
-    reserr.ProcessError(c, reserr.InternalServerError("Failed to begin transaction"), span, log, h.{HandlerName}Counter, "{HandlerName}Handler.Handle")
+    reserr.ProcessError(c, reserr.InternalServerError(err, "Failed to begin transaction"), span, log, h.{HandlerName}Counter, "{HandlerName}Handler.Handle")
     return
   }
   defer tx.Rollback(ctx)
@@ -78,7 +78,7 @@ func (h *{HandlerName}Handler) Handle(c *gin.Context) {
   // TODO: Implementation of the {HandlerName} logic goes here.
 
   if err := tx.Commit(ctx); err != nil {
-    reserr.ProcessError(c, reserr.InternalServerError("Failed to commit transaction"), span, log, h.{HandlerName}Counter, "{HandlerName}Handler.Handle")
+    reserr.ProcessError(c, reserr.InternalServerError(err, "Failed to commit transaction"), span, log, h.{HandlerName}Counter, "{HandlerName}Handler.Handle")
     return
   }
   
@@ -86,7 +86,7 @@ func (h *{HandlerName}Handler) Handle(c *gin.Context) {
   c.JSON(http.StatusOK, {HandlerName}Response{
     BaseResponse: resp.BaseResponse{
       Success: true,
-      Message: "Operation {HandlerName} completed successfully."
-    }
+      Message: "Operation {HandlerName} completed successfully.",
+    },
   })
 }`;
