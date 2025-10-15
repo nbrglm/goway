@@ -1,9 +1,11 @@
 # Change Log
 
-All notable changes to the "golang-project-tools-nbrglm" extension will be documented in this file.
+## [v0.0.3] - 2025-10-15
+- Fix: Package name recognition issue
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [v0.0.2] - 2025-10-14
+- Add Route URL and Method Inputs
 
-## [Unreleased]
+## [v0.0.1] - 2025-10-14
 
 - Initial release
