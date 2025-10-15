@@ -63,10 +63,12 @@ export async function newGoApiHandler() {
 
 	const config = vscode.workspace.getConfiguration("nbrglm-goway");
 	let editorPath = editor.document.uri.path;
-	if (editorPath.endsWith('.go') === false) {
-		editorPath = "handlers";
+	let packageName = "handlers";
+	if (editorPath.endsWith('.go') !== false) {
+		const segments = editorPath.split(path.sep);
+		segments.pop(); // Remove the file name
+		packageName = segments.pop() || "handlers"; // Get the parent directory name or default to "handlers"
 	}
-	const packageName = path.basename(editorPath, ".go") || 'handlers';
 
 	const baseImportPath = config.get<string>("handlers.baseImportPath") || "github.com/username/projectname";
 	const metricsNamespace = config.get<string>("handlers.metricsNamespace") || "myapp";
